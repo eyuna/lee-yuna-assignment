@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link th:href="@{/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div id="content">
+    <form th:action="@{/parse}" th:object="${request}">
+        <p>[입력]</p>
+        <div class="line">
+            <p>URL</p>
+            <div class="input">
+                <input type="url" th:field="*{urlLink}">
+            </div>
+        </div>
+        <div class="line">
+            <p>Type</p>
+            <div class="input">
+                <select th:field="*{optionId}">
+                    <option th:each="typeOpt : ${T(com.wemakeprice.assignment.model.Type).values()}"
+                            th:value="${typeOpt}" th:text="${typeOpt.value}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="line">
+            <p>출력 단위 묶음</p>
+            <div class="input">
+                <input type="number" th:field="*{unit}">
+            </div>
+        </div>
+        <div class="button">
+            <button type="submit">출력</button>
+        </div>
+    </form>
+    <div>
+        <p>[출력]</p>
+        <div>
+            <p>몫:</p>
+            <textarea th:field="${result.quotient}" readonly></textarea>
+        </div>
+        <div>
+            <p>나머지:</p>
+            <textarea th:field="${result.remainder}" readonly></textarea>
+        </div>
+    </div>
+</div>
+</body>
+</html>

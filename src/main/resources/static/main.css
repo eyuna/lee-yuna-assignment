@@ -1,0 +1,43 @@
+p {
+    display: inline-block;
+}
+
+.button {
+    text-align: right;
+}
+
+#content {
+    width: 40%;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+input {
+    width: 100%;
+    box-sizing : border-box;
+}
+
+select {
+    width: 100%;
+}
+
+.line {
+    position: relative;
+    word-break:break-all;
+}
+
+.input {
+    width: 70%;
+    position: absolute;
+    right: 0;
+    top: 30%;
+    text-align: center;
+}
+
+textarea {
+    background-color: transparent;
+    border: none;
+    resize: none;
+    float: right;
+    width: 70%;
+}
