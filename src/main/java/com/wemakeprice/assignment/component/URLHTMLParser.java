@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @Component
 public class URLHTMLParser {
@@ -50,36 +51,35 @@ public class URLHTMLParser {
         return content.replaceAll("[^a-zA-Z0-9]", "");
     }
 
-    public String[] getSortedEnglish(String content) {
+    public String getSortedEnglish(String content) {
         String engStr = content.replaceAll("[^a-zA-Z]", "");
         String[] engArr = engStr.split("");
 
-        Arrays.sort(engArr, (o1, o2) -> {
-            if (o1.compareToIgnoreCase(o2) == 0) return o1.compareTo(o2);
-            else return o1.compareToIgnoreCase(o2);
-        });
-        return engArr;
+        return Arrays
+                .stream(engArr).sorted((o1, o2) -> {
+                    if (o1.compareToIgnoreCase(o2) == 0) return o1.compareTo(o2);
+                    else return o1.compareToIgnoreCase(o2);})
+                .collect(Collectors.joining());
     }
 
-    public String[] getSortedNumbers(String content) {
+    public String getSortedNumbers(String content) {
         String numStr = content.replaceAll("[^0-9]", "");
         String[] numArr = numStr.split("");
 
-        Arrays.sort(numArr);
-        return numArr;
+        return Arrays.stream(numArr).sorted().collect(Collectors.joining());
     }
 
     public String getCrossOutput(String content) {
-        String[] engArr = getSortedEnglish(content);
-        String[] numArr = getSortedNumbers(content);
+        String engStr = getSortedEnglish(content);
+        String numStr = getSortedNumbers(content);
 
-        int engArrLen = engArr.length;
-        int numArrLen = numArr.length;
+        int engStrLen = engStr.length();
+        int numStrLen = numStr.length();
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < Math.max(engArrLen, numArrLen); ++i) {
-            if (i < engArrLen) sb.append(engArr[i]);
-            if (i < numArrLen) sb.append(numArr[i]);
+        for (int i = 0; i < Math.max(engStrLen, numStrLen); ++i) {
+            if (i < engStrLen) sb.append(engStr.charAt(i));
+            if (i < numStrLen) sb.append(numStr.charAt(i));
         }
         return sb.toString();
     }
