@@ -1,8 +1,6 @@
 package com.wemakeprice.assignment.component;
 
 import com.wemakeprice.assignment.model.ParserResult;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -13,7 +11,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
 
-@Slf4j
 @Component
 public class URLHTMLParser {
 
