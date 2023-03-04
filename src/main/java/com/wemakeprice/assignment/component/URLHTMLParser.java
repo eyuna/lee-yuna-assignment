@@ -1,6 +1,7 @@
 package com.wemakeprice.assignment.component;
 
 import com.wemakeprice.assignment.model.ParserResult;
+import com.wemakeprice.assignment.model.Type;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -14,9 +15,9 @@ import java.util.Arrays;
 @Component
 public class URLHTMLParser {
 
-    public ParserResult parse(String urlLink, String type, int unit) {
+    public ParserResult parse(String urlLink, Type type, int unit) {
         String content = getURLContents(urlLink);
-        if(type.equals("remove")) content = removeTag(content);
+        if(type == Type.REMOVE) content = removeTag(content);
         content = getNumbersAndEnglish(content);
         content = getCrossOutput(content);
         return getQuotientAndRemainder(content, unit);
