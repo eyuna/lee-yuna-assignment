@@ -24,15 +24,15 @@ Dependencies
  
 #### 2. 영어 및 숫자만 출력
 
- - 메서드: String getNumbersAndEnglish(String content)
+ - 메서드: getNumbersAndEnglish(String content)
  - 설명: 전달받은 String 의 영문자와 숫자 이외의 값을 제거합니다.
  - 정규표현식으로 String 을 필터링하였습니다.
  
 #### 3. 오름차순 출력
 
- - 메서드: String getSortedEnglish(String content), getSortedNumbers(String content)
+ - 메서드: getSortedEnglish(String content), getSortedNumbers(String content)
  - 설명: 각각 영문자, 숫자를 필터링하고 오름차순으로 정렬합니다. 
- - 영문자의 대소문자 정렬은 요구사항에 맞게 comparator 를 생성하여 Stream 을 사용해서 정렬하였습니다. 내부적으로 TimSort 를 사용해서 시간복잡도는 worst 인 경우에도 O(nlogn) 입니다.
+ - 영문자의 대소문자 정렬은 요구사항에 맞게 comparator 를 생성하여 Stream 을 사용해서 정렬하였습니다. 내부적으로 TimSort 를 사용해서 시간복잡도는 O(nlogn) 입니다.(worst 인 경우에도)
 
 #### 4. 영어 숫자 Mix
 
